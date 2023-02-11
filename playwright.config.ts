@@ -1,4 +1,4 @@
-import { defineConfig, devices } from '@playwright/test';
+import { defineConfig } from '@playwright/test';
 
 /**
  * Read environment variables from file.
@@ -48,12 +48,14 @@ export default defineConfig({
       name: 'Google Chrome',
       use: { channel: 'chrome' },
     },
-  
+
     // {
     //   name: 'Microsoft Edge',
     //   use: { channel: 'msedge' },
     // },
-  
+
+    // NOTE: To use the values below, don't forget to import "devices" from '@playwright/test'
+    //
     // {
     //   name: 'chromium',
     //   use: { ...devices['Desktop Chrome'] },
