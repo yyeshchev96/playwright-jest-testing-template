@@ -1,3 +1,14 @@
+# IDE - VSCode
+.vscode
+!.vscode/settings.json
+!.vscode/tasks.json
+!.vscode/launch.json
+!.vscode/extensions.json
+
+# Jetbrains
+.idea/
+*.iml
+
 # Logs
 logs
 *.log
@@ -22,18 +33,6 @@ lib-cov
 coverage
 *.lcov
 
-# nyc test coverage
-.nyc_output
-
-# Grunt intermediate storage (https://gruntjs.com/creating-plugins#storing-task-files)
-.grunt
-
-# Bower dependency directory (https://bower.io/)
-bower_components
-
-# node-waf configuration
-.lock-wscript
-
 # Compiled binary addons (https://nodejs.org/api/addons.html)
 build/Release
 
@@ -49,6 +48,9 @@ typings/
 
 # Optional npm cache directory
 .npm
+
+# nvm version
+.nvmrc
 
 # Optional eslint cache
 .eslintcache
@@ -91,14 +93,8 @@ dist
 # vuepress build output
 .vuepress/dist
 
-# Serverless directories
-.serverless/
-
-# FuseBox cache
-.fusebox/
-
-# DynamoDB Local files
-.dynamodb/
-
 # TernJS port file
 .tern-port
+/test-results/
+/playwright-report/
+/playwright/.cache/
