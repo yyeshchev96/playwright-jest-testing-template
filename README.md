@@ -1,11 +1,16 @@
-# Playwright Testing Template
+# Playwright Test Automation Template
 
 <!-- Status -->
 <h2 align="center"> 
 	<b>Status</b>: In Progress...  🚧
 </h2> 
 
----
+<!-- Stats -->
+<p align="center">
+  <img alt="Test Status" src="https://github.com/yyeshchev96/playwright-jest-testing-template/actions/workflows/playwright.yml/badge.svg?branch=main">
+  <img alt="Github top language" src="https://img.shields.io/github/languages/top/yyeshchev96/playwright-jest-testing-template">
+  <img alt="License" src="https://img.shields.io/github/license/yyeshchev96/playwright-jest-testing-template">
+</p>
 
 ## About
 The repo was created to help developers and software testers to quickly write UI/Acceptance tests using [Playwright](https://playwright.dev/) framework. 
