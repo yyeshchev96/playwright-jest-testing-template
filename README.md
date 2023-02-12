@@ -2,7 +2,7 @@
 
 <!-- Status -->
 <h2 align="center"> 
-	<b>Status</b>: In Progress...  🚧
+	<b>Status</b>: In Progress... 🚧
 </h2> 
 
 <!-- Stats -->
