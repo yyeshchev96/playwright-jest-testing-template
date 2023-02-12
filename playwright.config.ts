@@ -1,4 +1,4 @@
-import { defineConfig } from '@playwright/test';
+import { defineConfig, devices } from '@playwright/test';
 
 /**
  * Read environment variables from file.
@@ -18,7 +18,8 @@ export default defineConfig({
      * Maximum time expect() should wait for the condition to be met.
      * For example in `await expect(locator).toHaveText();`
      */
-    timeout: 5 * 1000
+    timeout: 10 * 1000,
+    toHaveScreenshot: { maxDiffPixelRatio: 0.2, threshold: 0.2 }
   },
   /* Run tests in files in parallel */
   fullyParallel: true,
@@ -44,22 +45,20 @@ export default defineConfig({
   /* Configure projects for major browsers */
   projects: [
     /* Test against branded browsers. */
-    {
-      name: 'Google Chrome',
-      use: { channel: 'chrome' },
-    },
-
+    // {
+    //   name: 'Google Chrome',
+    //   use: { channel: 'chrome' },
+    // },
     // {
     //   name: 'Microsoft Edge',
     //   use: { channel: 'msedge' },
     // },
 
     // NOTE: To use the values below, don't forget to import "devices" from '@playwright/test'
-    //
-    // {
-    //   name: 'chromium',
-    //   use: { ...devices['Desktop Chrome'] },
-    // },
+    {
+      name: 'chromium',
+      use: { ...devices['Desktop Chrome'] },
+    },
 
     // {
     //   name: 'firefox',

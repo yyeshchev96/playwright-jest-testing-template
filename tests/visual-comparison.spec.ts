@@ -1,3 +1,9 @@
+/** 
+ * If your CI uses other OS, you can generate a snapshot using docker image: 
+ * 
+ * docker run --rm --network host -v $(pwd):/work/ -w /work/ \
+ * -it mcr.microsoft.com/playwright:v1.30.0-focal /bin/bash
+*/
 import { expect, test } from '@playwright/test';
 
 test.use({
@@ -12,7 +18,7 @@ test('Playwright banner matches with the snapshot', async ({ page }) => {
   await page.goto('https://playwright.dev/');
 
   // get header image and compare it with a golden screenshot
-  expect(await page.locator('css=.hero__title').screenshot()).toMatchSnapshot(
+  await expect(page.locator('css=.hero__title')).toHaveScreenshot(
     'playwright-banner.png'
   );
 });

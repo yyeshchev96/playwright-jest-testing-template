@@ -9,6 +9,7 @@ jobs:
   defaultTests:
     timeout-minutes: 60
     runs-on: ubuntu-22.04
+    container: mcr.microsoft.com/playwright:v1.30.0-focal
 
     steps:
     - uses: actions/checkout@v3
