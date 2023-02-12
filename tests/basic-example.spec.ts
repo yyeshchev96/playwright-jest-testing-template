@@ -1,15 +1,17 @@
 import { expect, test } from '@playwright/test';
 
-test('Home page contains "Playwright" text', async ({ page }) => {
+// beforeEach hook is used to perform same action before each test case
+test.beforeEach(async ({ page }) => {
+  // opens basePage
   await page.goto('/');
+});
 
-  // Expect a title "to contain" a substring.
+test('Home page contains "Playwright" text', async ({ page }) => {
+  // Expect a title to contain a substring.
   await expect(page).toHaveTitle(/Playwright/);
 });
 
 test('"Get Started" link redirects to Intro page', async ({ page }) => {
-  await page.goto('/');
-
   // Click the get started link.
   await page.getByRole('link', { name: 'Get started' }).click();
 
