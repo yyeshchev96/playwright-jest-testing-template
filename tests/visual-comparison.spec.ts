@@ -17,6 +17,10 @@
 
 import { expect, test } from '@playwright/test';
 
+test.beforeEach(async ({ page }) => {
+  await page.goto('/');
+});
+
 test('Compare web-page with golden', async ({ page }) => {
   /**
    * Take a page screenshot and compare it to golden image
@@ -25,15 +29,12 @@ test('Compare web-page with golden', async ({ page }) => {
    * For full-page screenshot you have to set fullPage=true
    */
 
-  await page.goto('/');
   await expect(page).toHaveScreenshot('playwright-home-page.png');
   // For full-page:
   // await expect(page).toHaveScreenshot('playwright-landing-full-page.png', {fullPage: true});
 });
 
 test('Capture UI element by Locator and compare with golden', async ({ page }) => {
-  await page.goto('/');
-
   // get UI element using simple locator
   const getStartedBtn = await page.getByRole('link', { name: 'Get started' });
   await expect(getStartedBtn).toHaveScreenshot('get-started-btn.png');
@@ -46,7 +47,6 @@ test('Extract and compare Text or Arbitrary Binary data with golden', async ({ p
    * NOTE: It can be used for image comparison as well, but it's not recommended
    */
 
-  await page.goto('/');
   expect(await page.textContent('.hero__title')).toMatchSnapshot('playwright-banner-text.txt');
 });
 
@@ -56,7 +56,6 @@ test('Capture full-page screenshot using alternative way', async ({ page }) => {
    * Alternative solution would be to converts basic screenshot() into a byte object
    * and use toMatchSnapshot for comparison
    */
-  await page.goto('/');
 
   // save full-page screenshot into a buffer
   const fullPageImageBuffer = await page.screenshot({ fullPage: true });

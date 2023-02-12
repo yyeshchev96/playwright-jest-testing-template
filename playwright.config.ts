@@ -47,8 +47,8 @@ export default defineConfig({
     timeout: 10 * 1000,
 
     /* Custom settings for visual testing which is based on image comparison */
-    toHaveScreenshot: { maxDiffPixelRatio: 0.3, threshold: 0.3 },
-    toMatchSnapshot: { maxDiffPixelRatio: 0.3, threshold: 0.3 },
+    toHaveScreenshot: { maxDiffPixelRatio: 0.05, threshold: 0.2 },
+    toMatchSnapshot: { maxDiffPixelRatio: 0.05, threshold: 0.2 },
   },
 
   /* Run tests in files in parallel */
@@ -58,7 +58,7 @@ export default defineConfig({
   forbidOnly: !!process.env.CI,
 
   /* Retry on CI only */
-  retries: process.env.CI ? 2 : 0,
+  retries: process.env.CI ? 1 : 0,
 
   /* Opt out of parallel tests on CI. */
   workers: process.env.CI ? 1 : undefined,
@@ -84,7 +84,9 @@ export default defineConfig({
     baseURL: 'https://playwright.dev/',
 
     /* Collect trace when retrying the failed test. See https://playwright.dev/docs/trace-viewer */
-    trace: 'on-first-retry',
+    trace: 'retain-on-failure',
+    screenshot: 'only-on-failure',
+    video: 'retain-on-failure',
   },
 
   /* Configure projects for major browsers */
