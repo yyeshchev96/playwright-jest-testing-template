@@ -1,13 +1,13 @@
 /**
  * This is main configuration file for your Playwright project.
- * 
+ *
  * Playwright has two levels of configuration:
  *  - Global config
  *  - Local config
- * 
+ *
  * This file represents GLOBAL configuration - settings which should by applied to all tests
  * In addition, you can add or even override configuration options directly in the test file.
- * 
+ *
  * For details, see https://playwright.dev/docs/test-configuration#local-configuration
  */
 
@@ -23,9 +23,18 @@ import { defineConfig, devices } from '@playwright/test';
  * See https://playwright.dev/docs/test-configuration.
  */
 export default defineConfig({
-
   /* Relative path to test directory */
   testDir: './tests',
+
+  /**
+   * Template for snaptshots which are generated as part of the Visual Testing by:
+   * - toHaveScreenshot()
+   * - toMatchSnapshot()
+   *
+   * See https://playwright.dev/docs/next/api/class-testproject#test-project-snapshot-path-template
+   */
+  snapshotPathTemplate:
+    '{testDir}/__snapshots__/{testFilePath}/{platform}/{projectName}/{arg}{ext}',
 
   /* Maximum time one test can run for. */
   timeout: 60 * 1000,
@@ -59,7 +68,6 @@ export default defineConfig({
 
   /* Shared settings for all the projects below. See https://playwright.dev/docs/api/class-testoptions. */
   use: {
-
     /* Run browser in a headless mode (without window) */
     headless: true,
 
