@@ -22,11 +22,13 @@ test('Compare web-page with golden', async ({ page }) => {
    * Take a page screenshot and compare it to golden image
    *
    * NOTE: If your page has scroll it will capture only current viewport
-   * For full-page screenshot please see a corresponding example `
+   * For full-page screenshot you have to set fullPage=true
    */
 
   await page.goto('/');
   await expect(page).toHaveScreenshot('playwright-home-page.png');
+  // For full-page:
+  // await expect(page).toHaveScreenshot('playwright-landing-full-page.png', {fullPage: true});
 });
 
 test('Capture UI element by Locator and compare with golden', async ({ page }) => {
@@ -48,11 +50,11 @@ test('Extract and compare Text or Arbitrary Binary data with golden', async ({ p
   expect(await page.textContent('.hero__title')).toMatchSnapshot('playwright-banner-text.txt');
 });
 
-test('Capture full-page screenshot and compare with golden', async ({ page }) => {
+test('Capture full-page screenshot using alternative way', async ({ page }) => {
   /**
-   * Playwright screenshot() method has a property to make full-page screeshot
-   * Since any image can be represented as a Binary data,
-   * we can use that and compare our element using toMatchSnapshot()
+   * Playwright screenshot() and toHaveScreenshot() methods has a property to make full-page screeshot
+   * Alternative solution would be to converts basic screenshot() into a byte object
+   * and use toMatchSnapshot for comparison
    */
   await page.goto('/');
 
